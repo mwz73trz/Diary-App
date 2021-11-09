@@ -14,9 +14,28 @@ const getTopicById = async (topicId) => {
   return data;
 };
 
+const addTopic = (topicObject) => {
+  return fetch(`${BASE_URL}api/topics/`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(topicObject),
+  });
+};
+
+const getEntryById = async (entryId) => {
+  const url = `${BASE_URL}api/entries/${entryId}/`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
+
 const myExports = {
   getTopics,
   getTopicById,
+  addTopic,
+  getEntryById,
 };
 
 export default myExports;
